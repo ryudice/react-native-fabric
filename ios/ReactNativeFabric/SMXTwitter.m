@@ -11,7 +11,8 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(login:(RCTResponseSenderBlock)callback)
 {
-    [[Twitter sharedInstance] logInWithCompletion:^(TWTRSession *session, NSError *error) {
+    
+    [[Twitter sharedInstance] logInWithMethods:TWTRLoginMethodWebBased completion:^(TWTRSession *session, NSError *error) {
         if (session) {
             NSDictionary *body = @{@"authToken": session.authToken,
                                    @"authTokenSecret": session.authTokenSecret,
